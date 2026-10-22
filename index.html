@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello World</title>
+  <style>
+    /* CSS controls the page's appearance. */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      font-family: system-ui, sans-serif;
+      color: #19332c;
+      background: #edf5ef;
+    }
+    main {
+      width: 100%;
+      max-width: 440px;
+      padding: 32px;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 12px 40px #19332c12;
+    }
+    h1 { margin-top: 0; }
+    p { line-height: 1.5; }
+    label { display: block; margin-bottom: 8px; font-weight: 600; }
+    input, button {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font: inherit;
+    }
+    input { border: 1px solid #7a9187; }
+    button {
+      margin-top: 12px;
+      border: 0;
+      background: #226247;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover { background: #174932; }
+    :focus-visible { outline: 3px solid #b65c16; outline-offset: 3px; }
+    #greeting { margin-bottom: 0; font-size: 1.25rem; font-weight: 600; overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+  <!-- HTML defines the content and form controls. -->
+  <main>
+    <h1>Hello, World!</h1>
+    <p>A little greeting, just for you.</p>
+    <form id="hello-form">
+      <label for="name">Your name</label>
+      <input id="name" name="name" type="text" placeholder="Enter your name" autocomplete="given-name">
+      <button type="submit">Say hello</button>
+    </form>
+    <p id="greeting" aria-live="polite">Hello, World!</p>
+  </main>
+  <script>
+    // Find the HTML elements we want to work with.
+    const form = document.querySelector('#hello-form');
+    const nameInput = document.querySelector('#name');
+    const greeting = document.querySelector('#greeting');
+
+    // A form submits when you click its button or press Enter in the input.
+    form.addEventListener('submit', function (event) {
+      event.preventDefault(); // Keep the browser from reloading the page.
+      const name = nameInput.value.trim(); // Remove surrounding spaces.
+      greeting.textContent = `Hello, ${name || 'World'}!`;
+    });
+  </script>
+</body>
+</html>
